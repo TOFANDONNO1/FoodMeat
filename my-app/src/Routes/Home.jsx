@@ -6,6 +6,7 @@ import {
     SliderFilledTrack,
     SliderThumb,
     SliderMark,
+    
     Image
   } from '@chakra-ui/react'
   import { Grid, GridItem,center } from '@chakra-ui/react'
