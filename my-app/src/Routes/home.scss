@@ -1,0 +1,16 @@
+.main-div{
+    border: black ridge 11px;
+
+    h1{
+        border: red ridge 5px;
+        
+        &:hover{
+            width: 120%;
+        }
+
+        
+    }
+
+
+
+}
