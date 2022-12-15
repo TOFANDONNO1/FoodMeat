@@ -1,5 +1,5 @@
 import foodmeat from "../food-meat-low-resolution-color-logo.png"
-
+import {Navigate} from 'react-router-dom'
 import {
     Box,
     Flex,
@@ -27,7 +27,14 @@ import {
   
   export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
+    const linkHoverColor = useColorModeValue('gray.800', 'white');
   
+
+const handleclick=()=>{
+  // <Navigate to=/>
+};
+
+
     return (
       <Box>
         <Flex
@@ -39,7 +46,12 @@ import {
           borderBottom={1}
           borderStyle={'solid'}
           borderColor={useColorModeValue('gray.200', 'gray.900')}
-          align={'center'}>
+          align={'center'}
+          
+          as="header" 
+          position="fixed" 
+          w="100%">
+            
           <Flex
             flex={{ base: 1, md: 'auto' }}
             ml={{ base: -2 }}
@@ -61,9 +73,10 @@ import {
               Logo
             </Text> */}
             <Image onClick={()=><Link to={'/home'}></Link>}
-    boxSize='70px'
-    borderRadius='full'
-    objectFit='cover'
+    // boxSize='70px'
+    // borderRadius='full'
+    height='50px'
+    // objectFit='cover'
     src={foodmeat}
     alt='foodmeat'
   />
@@ -71,21 +84,33 @@ import {
               <DesktopNav />
             </Flex>
           </Flex>
-          <Input width={'30%'} focusBorderColor='lime' placeholder='Search For Any Delicious Product' />
+          <Input width={'30%'} focusBorderColor='lime' placeholder='Search For Any Delicious Product'  
+          
+          />
+          <Image width={'30px'} src="https://www.licious.in/img/rebranding/search-loc.png"/>
           <Stack
-            flex={{ base: 2, md: 0 }}
+            flex={{ base: 1 }}
+            
             justify={'center'}
             direction={'row'}
             spacing={19}>
             <Button
+            onClick={()=> handleclick}
               as={'a'}
-              fontSize={'sm'}
-              fontWeight={400}
+              fontSize={'xl'}
+              fontWeight={500}
               variant={'link'}
-              href={'#'}>
-              Log In
+              background='red'
+              color={'white'}
+              href={'#'}
+              _hover={{
+                textDecoration: 'none',
+                color: linkHoverColor,
+              }}
+              >
+              Log In  
             </Button>
-            {/* <Button
+            <Button
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'sm'}
               fontWeight={600}
@@ -95,8 +120,8 @@ import {
               _hover={{
                 bg: 'pink.300',
               }}>
-              Sign Up
-            </Button> */}
+            <Image src="https://www.licious.in/img/rebranding/cart_icon.svg"/> AddToCart
+            </Button>
           </Stack>
         </Flex>
   
@@ -108,22 +133,29 @@ import {
   }
   
   const DesktopNav = () => {
-    const linkColor = useColorModeValue('gray.600', 'gray.200');
+    // const linkColor = useColorModeValue('gray.600', 'gray.200');
     const linkHoverColor = useColorModeValue('gray.800', 'white');
     const popoverContentBgColor = useColorModeValue('white', 'gray.800');
   
     return (
       <Stack direction={'row'} spacing={4}>
         {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
-            <Popover trigger={'hover'} placement={'bottom-start'}>
-              <PopoverTrigger>
+          <Box key={navItem.label}
+      style={ {marginTop:'10%'}}
+          >    
+            <Popover  trigger={'hover'} placement={'bottom-start'}>
+              <PopoverTrigger
+             
+              >
                 <Link
+          backgroundColor='gray'
+
                   p={2}
                   href={navItem.href ?? '#'}
                   fontSize={'sm'}
                   fontWeight={500}
-                  color={linkColor}
+                  color={'white'}
+                  borderRadius='20px'
                   _hover={{
                     textDecoration: 'none',
                     color: linkHoverColor,
