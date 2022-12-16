@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import "./home.scss";
-import { Box, Button,Text, ButtonGroup ,Flex,WrapItem, Link} from '@chakra-ui/react'
+import { Box, Button,Text, ButtonGroup ,Flex,WrapItem, Link, Stack} from '@chakra-ui/react'
 import {
   Slider,
   SliderTrack,
@@ -14,6 +14,8 @@ import { Grid, GridItem, center } from "@chakra-ui/react";
 import foodmeat from "../food-meat-low-resolution-color-logo.png";
 import Footer from "../components/Footer";
 import AllRoutes from "./AllRoutes";
+import { useContext } from "react";
+import { AuthContext } from "../context/Authcontext";
 
 const data1st = [
   {
@@ -83,7 +85,7 @@ const BestSellers=[
         "productname": "Chicken Curry Cut - Small Pieces",
         "item-desc": "Fresh Nakhre & fresh bone-in & boneless  cuts",
         "net-weight": "500gms",
-        rupee: "₹159",
+        rupee: "0159",
         "rupee 2": "MRP:",
         "add-to-cart": "Add To Cart",
     
@@ -95,7 +97,7 @@ const BestSellers=[
         "productname": "Chicken Curry Cut - Small Pieces (Large Pack)",
         "item-desc": "Bone-in chunky pieces of skinless chicken",
         "net-weight": "1000gms",
-        rupee: "₹299",
+        rupee: "0299",
         "rupee 2": "MRP:",
         "add-to-cart": "Add To Cart",
         "scooter src": "https://www.licious.in/img/rebranding/express_delivery.svg",
@@ -106,7 +108,7 @@ const BestSellers=[
         "productname": "Chicken Breast - Boneless",
         "item-desc": "Boneless fillets: special nakhre for special cuts",
         "net-weight": "450gms",
-        rupee: "₹269",
+        rupee: "0269",
         "rupee 2": "MRP:",
         "add-to-cart": "Add To Cart",
         "scooter src": "https://www.licious.in/img/rebranding/express_delivery.svg",
@@ -122,7 +124,7 @@ const BonelessCuts=[
         "productname": "Chicken Thigh Boneless",
         "item-desc": "Fresh nakhre for fresh, juicy & tender chicken thigh cuts",
         "net-weight": "500gms",
-        rupee: "₹159",
+        rupee: "0159",
         "rupee 2": "MRP:",
         "add-to-cart": "Add To Cart",
     
@@ -134,7 +136,7 @@ const BonelessCuts=[
         "productname": "Chicken Mince (Keema)",
         "item-desc": "Tender, perfectly ground meat from our Nakhrebaaz team!",
         "net-weight": "400gms",
-        rupee: "₹299",
+        rupee: "0299",
         "rupee 2": "MRP:",
         "add-to-cart": "Add To Cart",
         "scooter src": "https://www.licious.in/img/rebranding/express_delivery.svg",
@@ -145,7 +147,7 @@ const BonelessCuts=[
         "productname": "Seer (Vanjaram/Surmai) Large - Boneless Cubes",
         "item-desc": "Also called Surmai, Vanjaram, Neymeen, Anjal, Ser Maach",
         "net-weight": "450gms",
-        rupee: "₹369",
+        rupee: "0369",
         "rupee 2": "MRP:",
         "add-to-cart": "Add To Cart",
         "scooter src": "https://www.licious.in/img/rebranding/express_delivery.svg",
@@ -162,7 +164,7 @@ const Breakfasst=[ {
     "item-desc": "Freshly cooked chicken in a creamy, spicy sriracha base.",
     // "net-weight": "500gms",
     p:'Pieces: 1',
-    rupee: "₹159",
+    rupee: "0159",
     "rupee 2": "MRP:",
     "add-to-cart": "Add To Cart",
 
@@ -175,7 +177,7 @@ const Breakfasst=[ {
     "item-desc": "A creamy base with freshlythe sweet chilly dispersion of cracked black pepper pieces and garlic.",
     // "net-weight": "400gms",
     p:'Pie: 1',
-    rupee: "₹299",
+    rupee: "0299",
     "rupee 2": "MRP:",
     "add-to-cart": "Add To Cart",
     "scooter src": "https://www.licious.in/img/rebranding/express_delivery.svg",
@@ -187,7 +189,7 @@ const Breakfasst=[ {
     "item-desc": "A Nakhrebaaz chef's creation: Real chicken & mega flavou",
     // "net-weight": "450gms",
     p:'Pie: 1',
-    rupee: "₹369",
+    rupee: "0369",
     "rupee 2": "MRP:",
     "add-to-cart": "Add To Cart",
     "scooter src": "https://www.licious.in/img/rebranding/express_delivery.svg",
@@ -235,10 +237,41 @@ const IntheNews=[
    
 ];
 const dis={ base: 'flex', md: 'flex',lg:'flex',xl:'grid' }
-const  flex={base:"column" ,md:'column',lg:"row",xl:'row'}
+const  flex={base:"column" ,md:'column',lg:"row",xl:'row'};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function Home() {
+
+const {adddatasForCart,cartData}=useContext(AuthContext);
+
+
+const handleClick=(e)=>{
+ adddatasForCart(e);
+};
+console.log(cartData)
+
+
+
   return (
     <div>
+    
+      {/* <Button >
+      <Link href={'/login'}>
+      chicken
+      </Link>
+     </Button> */}
      
       <Navbar />
       {/* <AllRoutes/> */}
@@ -276,8 +309,11 @@ style={{
   flexDirection={flex} 
 className="data1st">
     {data1st.map((e)=> 
-    <Box onClick={()=><Link to='https://www.licious.in/delicious-deals'/>}>
-       <Box><Image src={e.IMGNAME} alt={e.PRODUCTNAME} /></Box> 
+    <Box  key={e.PRODUCTNAME+e.img}>
+       <Box 
+       key={e.PRODUCTNAME}
+       >
+        <Image src={e.IMGNAME} alt={e.PRODUCTNAME} /></Box> 
         <Text>{e.PRODUCTNAME}</Text>
     </Box>
     )}
@@ -333,7 +369,9 @@ className="data1st">
 <Flex   display={dis} 
         flexDirection={flex}  className="BestSellers">
     {BestSellers.map((e)=>
-    <Box>
+    <Box
+    key={e.productname+e.img}
+    >
         <Box>
             <Image src={e.img} alt={e.productname}/>
         </Box>
@@ -346,7 +384,9 @@ className="data1st">
         <Box><Text>{e["net-weight"]}</Text></Box>
         <Box>
             <Box>{e["rupee 2"]+e.rupee}</Box>
-            <Box>  <Button colorScheme='pink'>ADD TO CART</Button></Box>
+            <Box>  <Button colorScheme='pink'
+              onClick={()=>handleClick(e)}
+            >ADD TO CART</Button></Box>
         </Box>
         <Box>
             <Image src={e["scooter src"]} alt="" />{e.message}
@@ -369,7 +409,9 @@ className="data1st">
   flexDirection={flex} 
 className="BestSellers">
     {BonelessCuts.map((e)=>
-    <Box>
+    <Box 
+    key={e.productname+e.img}
+    >
         <Box>
             <Image src={e.img} alt={e.productname}/>
         </Box>
@@ -382,7 +424,9 @@ className="BestSellers">
         <Box><Text>{e["net-weight"]}</Text></Box>
         <Box>
             <Box>{e["rupee 2"]+e.rupee}</Box>
-            <Box>  <Button colorScheme='pink'>ADD TO CART</Button></Box>
+            <Box>  <Button colorScheme='pink'
+              onClick={()=>handleClick(e)}
+            >ADD TO CART</Button></Box>
         </Box>
         <Box>
             <Image src={e["scooter src"]} alt="" />{e.message}
@@ -422,7 +466,9 @@ display={dis}
 flexDirection={flex} 
 className="data1st">
     {data1st.map((e)=> 
-    <Box>
+    <Box
+    key={e.PRODUCTNAME+e.IMGNAME}
+    >
        <Box><Image src={e.IMGNAME} alt={e.PRODUCTNAME} /></Box> 
         <Text>{e.PRODUCTNAME}</Text>
     </Box>
@@ -446,7 +492,9 @@ display={dis}
 flexDirection={flex} 
 className="BestSellers">
     {Breakfasst.map((e)=>
-    <Box>
+    <Box
+    key={e.productname+e.img}
+    >
         <Box>
             <Image src={e.img} alt={e.productname}/>
         </Box>
@@ -459,7 +507,12 @@ className="BestSellers">
         <Box><Text>{e["p"]}</Text></Box>
         <Box>
             <Box>{e["rupee 2"]+e.rupee}</Box>
-            <Box>  <Button colorScheme='pink'>ADD TO CART</Button></Box>
+            <Box>  <Button colorScheme='pink'
+            
+
+            onClick={()=>handleClick(e)}
+
+            >ADD TO CART</Button></Box>
         </Box>
         <Box>
             <Image src={e["scooter src"]} alt="" />{e.message}
@@ -479,11 +532,14 @@ className="BestSellers">
 
    <Flex 
    
-   display={dis} 
-   flexDirection={flex} 
+   display={ {base: 'flex', md: 'flex' }}
+     flexDirection={{base:"column" ,md:'row'}}
+ 
    className="Blog">{CheckBlog.map((e)=>
     
-    <Box ><Image src={e.img} alt={e.des} />
+    <Box 
+    key={e.des+e.img}
+    ><Image src={e.img} alt={e.des} />
      
      <Text>{e.des}</Text></Box>
      
@@ -493,7 +549,14 @@ className="BestSellers">
  
 
 
-<img src="https://d2407na1z3fc0t.cloudfront.net/homepageStaticBanner/homepageStaticBanner_62a34b8cba7db" alt="" />
+<Link
+href="/login"
+>
+<Image 
+src="https://d2407na1z3fc0t.cloudfront.net/homepageStaticBanner/homepageStaticBanner_62a34b8cba7db"
+></Image>
+</Link>
+{/* <img  alt="" /> */}
 
 
 
@@ -506,12 +569,14 @@ className="BestSellers">
       
 }}>In the News</b>
 <Flex
-  display={dis} 
-  flexDirection={flex} 
+display={{base: 'flex', md: 'flex' }}
+flexDirection={{base:"column" ,md:'row'}}
 className="News">
     {
         IntheNews.map((e)=>
-        <Box>
+        <Box
+        key={e.des+e.img}
+        >
         <Image src={e.img} alt={e.des}/>
         <Text>{e.des}</Text>
     </Box>

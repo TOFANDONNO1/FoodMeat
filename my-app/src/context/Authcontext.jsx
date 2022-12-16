@@ -8,16 +8,20 @@ let obj={
 };
 
 function AuthContextProvider({children}){
-
+const [cartData,setDataForCart]=useState([]);
     const [auth,setauth]=useState(obj);
-    const loginUser=()=>{
-        setauth({...auth,isAuth:true,token:'token',})
+    const loginUser=(token)=>{
+        setauth({...auth,isAuth:true,token:token,})
     };
     const logoutUser=()=>{
         setauth(obj);
     };
+
+    const adddatasForCart=(e)=>{
+        setDataForCart([...cartData,e])
+    }
     return(
-    <AuthContext.Provider  value={{auth,loginUser,logoutUser}}>
+    <AuthContext.Provider  value={{Userauth:auth,loginUser,logoutUser,adddatasForCart,cartData}}>
         {children}
     </AuthContext.Provider>
     )
