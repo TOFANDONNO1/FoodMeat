@@ -383,16 +383,18 @@ className="data1st">
         flexDirection={flex}  className="BestSellers">
     {BestSellers.map((e)=>
 
-    <Link href='/chickenpage'
- _hover={{textDecoration: 'none'}}
-    >
+   
 
     <Box
     key={e.productname+e.img}
-    >
+    > <Link href='/chickenpage'
+    _hover={{textDecoration: 'none'}}
+       >
         <Box>
             <Image src={e.img} alt={e.productname}/>
         </Box>
+    </Link>
+
         <Box>
             <Text>{e.productname}</Text>
         </Box>
@@ -410,7 +412,6 @@ className="data1st">
             <Image src={e["scooter src"]} alt="" />{e.message}
         </Box>
     </Box>
-    </Link>
 
     )}
     
