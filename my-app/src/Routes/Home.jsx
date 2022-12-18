@@ -1,19 +1,12 @@
 import Navbar from "../components/Navbar";
 import "./home.scss";
-import { Box, Button,Text, ButtonGroup ,Flex,WrapItem, Link, Stack} from '@chakra-ui/react'
-import {
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderMark,
-  Image,
-} from "@chakra-ui/react";
-import { Grid, GridItem, center } from "@chakra-ui/react";
+import { Box, Button,Text,   Image,Flex, Link,} from '@chakra-ui/react'
+
+// import { Grid, GridItem, center } from "@chakra-ui/react";
 
 import foodmeat from "../food-meat-low-resolution-color-logo.png";
 import Footer from "../components/Footer";
-import AllRoutes from "./AllRoutes";
+
 import { useContext } from "react";
 import { AuthContext } from "../context/Authcontext";
 
@@ -83,7 +76,7 @@ const BestSellers=[
     
         'img':'	https://dao54xqhg9jfa.cloudfront.net/OMS-ProductMerchantdising/ac53a507-4bdd-92cd-ee0b-c96281e04999/original/chicken-curry-cut.jpg?format=webp',
         "productname": "Chicken Curry Cut - Small Pieces",
-        "item-desc": "Fresh Nakhre & fresh bone-in & boneless  cuts",
+        "des": "Fresh Nakhre & fresh bone-in & boneless  cuts",
         "net-weight": "500gms",
         rupee: "0159",
         "rupee 2": "MRP:",
@@ -95,7 +88,7 @@ const BestSellers=[
       {
         'img':'https://dao54xqhg9jfa.cloudfront.net/OMS-ProductMerchantdising/4cad2ee9-9257-9109-62a1-da4082b2cf36/original/sho.jpg?format=webp',
         "productname": "Chicken Curry Cut - Small Pieces (Large Pack)",
-        "item-desc": "Bone-in chunky pieces of skinless chicken",
+        "des": "Bone-in chunky pieces of skinless chicken",
         "net-weight": "1000gms",
         rupee: "0299",
         "rupee 2": "MRP:",
@@ -106,7 +99,7 @@ const BestSellers=[
       {
         'img':'https://dao54xqhg9jfa.cloudfront.net/OMS-ProductMerchantdising/fcea4075-0ed2-23c1-2b3f-1cddcbd1d11f/original/Chicken-Breast-Boneless-(3-4-Pieces)-Hero-Shot_(1).jpg?format=webp',
         "productname": "Chicken Breast - Boneless",
-        "item-desc": "Boneless fillets: special nakhre for special cuts",
+        "des": "Boneless fillets: special nakhre for special cuts",
         "net-weight": "450gms",
         rupee: "0269",
         "rupee 2": "MRP:",
@@ -122,7 +115,7 @@ const BonelessCuts=[
     
         'img':'	https://dao54xqhg9jfa.cloudfront.net/OMS-ProductMerchantdising/ffd4144f-25a7-6f26-2d90-9a9db0332dda/original/Chicken_Thigh_Boneless_Hero_Shot.jpg?format=webp',
         "productname": "Chicken Thigh Boneless",
-        "item-desc": "Fresh nakhre for fresh, juicy & tender chicken thigh cuts",
+        "des": "Fresh nakhre for fresh, juicy & tender chicken thigh cuts",
         "net-weight": "500gms",
         rupee: "0159",
         "rupee 2": "MRP:",
@@ -134,7 +127,7 @@ const BonelessCuts=[
       {
         'img':'https://dao54xqhg9jfa.cloudfront.net/OMS-ProductMerchantdising/3e9023d4-e2f7-2fe6-c68f-75014733ff7e/original/Chicken_Mince_Large_Pack_Hero_Shot.jpg?format=webp',
         "productname": "Chicken Mince (Keema)",
-        "item-desc": "Tender, perfectly ground meat from our Nakhrebaaz team!",
+        "des": "Tender, perfectly ground meat from our Nakhrebaaz team!",
         "net-weight": "400gms",
         rupee: "0299",
         "rupee 2": "MRP:",
@@ -145,7 +138,7 @@ const BonelessCuts=[
       {
         'img':'https://dao54xqhg9jfa.cloudfront.net/OMS-ProductMerchantdising/06467851-b012-3b3f-0f74-5c758afa2603/original/p1_tile_images-25.jpg?format=webp',
         "productname": "Seer (Vanjaram/Surmai) Large - Boneless Cubes",
-        "item-desc": "Also called Surmai, Vanjaram, Neymeen, Anjal, Ser Maach",
+        "des": "Also called Surmai, Vanjaram, Neymeen, Anjal, Ser Maach",
         "net-weight": "450gms",
         rupee: "0369",
         "rupee 2": "MRP:",
@@ -161,7 +154,7 @@ const Breakfasst=[ {
     
     'img':'	https://dao54xqhg9jfa.cloudfront.net/OMS-ProductMerchantdising/fee95638-21fd-1706-4569-ed42430fd716/original/Sriracha-chicken-spreadsTIle-image.jpg?format=webp',
     "productname": "Chunky Sriracha Chicken Spreads",
-    "item-desc": "Freshly cooked chicken in a creamy, spicy sriracha base.",
+    "des": "Freshly cooked chicken in a creamy, spicy sriracha base.",
     // "net-weight": "500gms",
     p:'Pieces: 1',
     rupee: "0159",
@@ -174,7 +167,7 @@ const Breakfasst=[ {
   {
     'img':'https://dao54xqhg9jfa.cloudfront.net/OMS-ProductMerchantdising/faa6ff18-1108-6acf-4885-aa0fdb5e13ec/original/Chunky-Shawarma-Chicken-Spread_(7).jpg?format=webp',
     "productname": "Chunky Shawarma Chicken Spread",
-    "item-desc": "A creamy base with freshlythe sweet chilly dispersion of cracked black pepper pieces and garlic.",
+    "des": "A creamy base with freshlythe sweet chilly dispersion of cracked black pepper pieces and garlic.",
     // "net-weight": "400gms",
     p:'Pie: 1',
     rupee: "0299",
@@ -186,7 +179,7 @@ const Breakfasst=[ {
   {
     'img':'https://dao54xqhg9jfa.cloudfront.net/OMS-ProductMerchantdising/b7cbafbe-bdf9-39cc-30c0-5a7c432309d8/original/Chunky-Herby-Tomato-Chicken-Spread_(1).jpg?format=webp',
     "productname": "Chunky Continental Chicken Spread",
-    "item-desc": "A Nakhrebaaz chef's creation: Real chicken & mega flavou",
+    "des": "A Nakhrebaaz chef's creation: Real chicken & mega flavou",
     // "net-weight": "450gms",
     p:'Pie: 1',
     rupee: "0369",
@@ -254,24 +247,33 @@ const  flex={base:"column" ,md:'column',lg:"row",xl:'row'};
 
 function Home() {
 
-const {adddatasForCart,cartData}=useContext(AuthContext);
+const {adddatasForCart}=useContext(AuthContext);
+let arr=JSON.parse(localStorage.getItem('data'))||[];
 
 
 const handleClick=(e)=>{
  adddatasForCart(e);
+//  const das=JSON.stringify(e)
+arr.push(e)
+//  console.log(e)
+//  console.log(arr)
+ localStorage.setItem('data', JSON.stringify(arr))
+
 };
-console.log(cartData)
+
+// console.log(arr)
+
 
 
 
   return (
     <div>
-    
-      {/* <Button >
-      <Link href={'/login'}>
+{/*     
+       <Button >
+      <Link href={'/cartpage'}>
       chicken
       </Link>
-     </Button> */}
+     </Button>  */}
      
       <Navbar />
       {/* <AllRoutes/> */}
@@ -285,7 +287,7 @@ console.log(cartData)
 
       <hr />
       <img style={{border:'1px solid red'}}
-        src="https://d2407na1z3fc0t.cloudfront.net/Slider/banner_63630e9d6ba0e"
+        src="https://d2407na1z3fc0t.cloudfront.net/Slider/banner_63617b4964e45"
         alt="https://d2407na1z3fc0t.cloudfront.net/Slider/banner_63630e9d6ba0e"
       />
       <br />
@@ -309,6 +311,15 @@ style={{
   flexDirection={flex} 
 className="data1st">
     {data1st.map((e)=> 
+
+    <Link href="/chickenpage"
+    _hover={
+      {
+        textDecoration:'none',
+      }
+    }
+    >
+
     <Box  key={e.PRODUCTNAME+e.img}>
        <Box 
        key={e.PRODUCTNAME}
@@ -316,6 +327,8 @@ className="data1st">
         <Image src={e.IMGNAME} alt={e.PRODUCTNAME} /></Box> 
         <Text>{e.PRODUCTNAME}</Text>
     </Box>
+    </Link>
+
     )}
 
 </Flex>
@@ -369,6 +382,11 @@ className="data1st">
 <Flex   display={dis} 
         flexDirection={flex}  className="BestSellers">
     {BestSellers.map((e)=>
+
+    <Link href='/chickenpage'
+ _hover={{textDecoration: 'none'}}
+    >
+
     <Box
     key={e.productname+e.img}
     >
@@ -379,7 +397,7 @@ className="data1st">
             <Text>{e.productname}</Text>
         </Box>
         <Box>
-            <Text>{e["item-desc"]}</Text>
+            <Text>{e["des"]}</Text>
         </Box>
         <Box><Text>{e["net-weight"]}</Text></Box>
         <Box>
@@ -392,6 +410,8 @@ className="data1st">
             <Image src={e["scooter src"]} alt="" />{e.message}
         </Box>
     </Box>
+    </Link>
+
     )}
     
 </Flex>
@@ -419,7 +439,7 @@ className="BestSellers">
             <Text>{e.productname}</Text>
         </Box>
         <Box>
-            <Text>{e["item-desc"]}</Text>
+            <Text>{e["des"]}</Text>
         </Box>
         <Box><Text>{e["net-weight"]}</Text></Box>
         <Box>
@@ -502,7 +522,7 @@ className="BestSellers">
             <Text>{e.productname}</Text>
         </Box>
         <Box>
-            <Text>{e["item-desc"]}</Text>
+            <Text>{e["des"]}</Text>
         </Box>
         <Box><Text>{e["p"]}</Text></Box>
         <Box>

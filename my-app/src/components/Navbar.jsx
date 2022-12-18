@@ -114,18 +114,28 @@ const {Userauth}=useContext(AuthContext);
               >
             {Userauth.isAuth?'Logout':'Login'}   
             </Button>
+
+            <Link href='/cartpage'
+                textDecoration= 'none'
+            
+            >
             <Button
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'sm'}
               fontWeight={600}
               color={'white'}
               bg={'pink.400'}
-              href={'#'}
+              textDecoration={'none'}
+              href={'/cartpage'}
               _hover={{
+                textDecoration: 'none',
+
                 bg: 'pink.300',
               }}>
             <Image src="https://www.licious.in/img/rebranding/cart_icon.svg"/> Cart
             </Button>
+            </Link>
+           
           </Stack>
         </Flex>
   
