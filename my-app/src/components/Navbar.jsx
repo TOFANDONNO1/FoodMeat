@@ -24,15 +24,15 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
   } from '@chakra-ui/icons';
+import { useContext } from "react";
+import { AuthContext } from "../context/Authcontext";
   
   export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
     const linkHoverColor = useColorModeValue('gray.800', 'white');
   
 
-const handleclick=()=>{
-  // <Navigate to=/>
-};
+const {Userauth}=useContext(AuthContext);
 
 
     return (
@@ -72,14 +72,18 @@ const handleclick=()=>{
               color={useColorModeValue('gray.800', 'white')}>
               Logo
             </Text> */}
-            <Image onClick={()=><Link to={'/home'}></Link>}
-    // boxSize='70px'
-    // borderRadius='full'
-    height='50px'
-    // objectFit='cover'
-    src={foodmeat}
+        <Box>
+        <Link href={'/'}>
+        <Image 
+                    height='50px'
+      src={foodmeat}
     alt='foodmeat'
-  />
+  >
+ 
+  </Image>
+ </Link>
+
+          </Box>    
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
             </Flex>
@@ -95,33 +99,43 @@ const handleclick=()=>{
             direction={'row'}
             spacing={19}>
             <Button
-            onClick={()=> handleclick}
+       
               as={'a'}
               fontSize={'xl'}
               fontWeight={500}
               variant={'link'}
               background='red'
               color={'white'}
-              href={'#'}
+              href={'/login'}
               _hover={{
                 textDecoration: 'none',
                 color: linkHoverColor,
               }}
               >
-              Log In  
+            {Userauth.isAuth?'Logout':'Login'}   
             </Button>
+
+            <Link href='/cartpage'
+                textDecoration= 'none'
+            
+            >
             <Button
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'sm'}
               fontWeight={600}
               color={'white'}
               bg={'pink.400'}
-              href={'#'}
+              textDecoration={'none'}
+              href={'/cartpage'}
               _hover={{
+                textDecoration: 'none',
+
                 bg: 'pink.300',
               }}>
-            <Image src="https://www.licious.in/img/rebranding/cart_icon.svg"/> AddToCart
+            <Image src="https://www.licious.in/img/rebranding/cart_icon.svg"/> Cart
             </Button>
+            </Link>
+           
           </Stack>
         </Flex>
   
@@ -295,10 +309,10 @@ const handleclick=()=>{
       label: 'Location',
       children: [
         {
-          label:'cuttack'
+          label:'KOOOOCOO'
         },
         {
-          label:"BBSR"
+          label:"NDMMFJEE"
         },
         {
             label:'DOKEN'
@@ -326,7 +340,7 @@ const handleclick=()=>{
         {
           label: 'Today Deals',
           subLabel: '',
-          href: '#',
+          href: 'https://www.licious.in/delicious-deals',
         },
         {
           label: 'Chicken',
@@ -340,7 +354,7 @@ const handleclick=()=>{
           {
             label: 'Mutton',
             subLabel: 'Combos',
-            href: 'https://www.licious.in/seafood',
+            href: 'https://www.licious.in/chicken',
           },
           {
             label: 'Ready to Cook',

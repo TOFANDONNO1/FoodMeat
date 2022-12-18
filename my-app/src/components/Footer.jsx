@@ -11,15 +11,15 @@ import {
   Image,
 } from "@chakra-ui/react";
 function Footer(){
-    const breakpoints = {
-  sm: '30em',
-  md: '48em',
-  lg: '62em',
-  xl: '80em',
-  '2xl': '96em',
-};
-const dis={ base: 'flex', md: 'flex',lg:'flex',xl:'grid' }
-const  flex={base:"column" ,md:'column',lg:"row",xl:'row'}
+//     const breakpoints = {
+//   sm: '30em',
+//   md: '48em',
+//   lg: '62em',
+//   xl: '80em',
+//   '2xl': '96em',
+// };
+const dis={  }
+const  flex={}
 // const styles={
 //     display:{ base: 'flex', md: 'flex',lg:'flex',xl:'grid' } 
 
@@ -32,9 +32,10 @@ const  flex={base:"column" ,md:'column',lg:"row",xl:'row'}
 <Image style={{width:'180px'}} src={foodmeat} alt="LOGO" />
 
         <Flex 
-        display={dis} 
-        flexDirection={flex} 
-        className='firstdivFooter' >
+        // display={dis} 
+        // flexDirection={flex} 
+        // className='firstdivFooter'
+         >
             
             <Box >
                 <Text>USEFUL LINKS</Text>
@@ -89,8 +90,8 @@ const  flex={base:"column" ,md:'column',lg:"row",xl:'row'}
         </Flex>
     <br />
     <Flex
-     display={dis} 
-     flexDirection={flex} 
+    //  display={dis} 
+    //  flexDirection={flex} 
     className='seconddivFooter'><b>KEEP IN TOUCH</b>
    
    <Box display={{ base: 'flex', md: 'none' }} flexDirection='column'>
@@ -103,8 +104,8 @@ const  flex={base:"column" ,md:'column',lg:"row",xl:'row'}
     </Flex>
     <Text>CITIES WE SERVE</Text>
     <Flex 
- display={dis} 
- flexDirection={flex} 
+//  display={dis} 
+//  flexDirection={flex} 
     className='Cities'>
        
         <Text>Bengaluru</Text>
@@ -135,7 +136,8 @@ const  flex={base:"column" ,md:'column',lg:"row",xl:'row'}
 <Flex
  display={dis} 
  flexDirection={flex} 
-style={{display:'flex'}}>
+style={{display:'flex'}}
+>
 <Image  src="https://www.licious.in/img/rebranding/copyright2.png" alt="https://www.licious.in/img/rebranding/copyright2.png" /><Text>
     2022 Delightful Gourmet Pvt Ltd .All Rights Reserved
 </Text>
